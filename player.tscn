@@ -6,8 +6,10 @@
 
 [node name="player" type="CharacterBody3D" unique_id=98640684]
 script = ExtResource("1_4flbx")
-run_speed = 7.0
-dash_speed = 20.0
+walk_speed = 4.0
+run_speed = 6.0
+dash_speed = 14.0
+dash_duration = 0.1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=829014061]
 shape = SubResource("CapsuleShape3D_onrkg")
