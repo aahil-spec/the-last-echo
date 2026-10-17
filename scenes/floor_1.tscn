@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://dir8va1qjyn2f" path="res://scenes/echo.tscn" id="24_s4g8o"]
 [ext_resource type="Script" uid="uid://di3eg86obopef" path="res://Scripts/reset_manager.gd" id="25_7xsrg"]
 [ext_resource type="Script" uid="uid://dv86ualvvgef" path="res://Scripts/loop_timer_ui.gd" id="26_dm5w4"]
+[ext_resource type="Script" uid="uid://cgc6c7osnq00o" path="res://Scripts/Interactable.gd" id="27_7xda7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_goiq3"]
 albedo_color = Color(0.20871031, 0.20871007, 0.2087102, 1)
@@ -59,6 +60,8 @@ albedo_texture = ExtResource("1_avih0")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0g2tf"]
 albedo_texture = ExtResource("1_avih0")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dm5w4"]
 
 [node name="floor_1" type="Node3D" unique_id=1911737222]
 
@@ -371,5 +374,12 @@ offset_bottom = 67.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 48
 text = "60"
+
+[node name="TestButton" type="StaticBody3D" parent="." unique_id=38540377]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9017153, 1.9866457, 1.7611971)
+script = ExtResource("27_7xda7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestButton" unique_id=1311673407]
+shape = SubResource("BoxShape3D_dm5w4")
 
 [editable path="player"]
