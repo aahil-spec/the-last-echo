@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cldsxpmxauwkp"]
+
+[ext_resource type="Script" uid="uid://g8xs526ht1na" path="res://Scripts/PressurePlate.gd" id="1_ct5vs"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ct5vs"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ct5vs"]
+size = Vector3(1, 0.2, 1)
+
+[node name="PressurePlate" type="Area3D" unique_id=1805411847]
+script = ExtResource("1_ct5vs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=120925076]
+mesh = SubResource("BoxMesh_ct5vs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=680221092]
+shape = SubResource("BoxShape3D_ct5vs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

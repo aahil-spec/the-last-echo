@@ -5,9 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://dbdpedykri3u5" path="res://assets/laboratory_door.glb" id="1_vthxg"]
 [ext_resource type="PackedScene" uid="uid://b2vxlphpf4tis" path="res://assets/sci-fi_wall (3).glb" id="2_6k3ta"]
 [ext_resource type="PackedScene" uid="uid://cvcl588447w6f" path="res://assets/window (1).glb" id="3_4wqxu"]
-[ext_resource type="PackedScene" uid="uid://daqy8reln6pum" path="res://player.tscn" id="4_mmu3l"]
+[ext_resource type="PackedScene" uid="uid://daqy8reln6pum" path="res://scenes/player.tscn" id="4_mmu3l"]
 [ext_resource type="PackedScene" uid="uid://cyou7v2ug7lrh" path="res://assets/retro_sci-fi_computer_desk.glb" id="5_saq83"]
 [ext_resource type="PackedScene" uid="uid://br3n8umo3lmbo" path="res://assets/sci-fi_computer_desk_console (1).glb" id="6_pp7jt"]
+[ext_resource type="Script" uid="uid://blus2p84ra46" path="res://Scripts/door.gd" id="6_yacar"]
 [ext_resource type="PackedScene" uid="uid://26644g76qnsk" path="res://assets/locker_scifi_type_va.glb" id="7_xnrxe"]
 [ext_resource type="PackedScene" uid="uid://bi1d7spuegfd7" path="res://assets/old_nuclear_computer.glb" id="8_vbxqm"]
 [ext_resource type="PackedScene" uid="uid://c5ryykgxcmi0p" path="res://assets/vent.glb" id="9_xv0bk"]
@@ -19,6 +20,12 @@
 [ext_resource type="PackedScene" uid="uid://cpehdrut0mjg5" path="res://assets/sci-fi_lab_machine.glb" id="17_547c5"]
 [ext_resource type="PackedScene" uid="uid://dgsljblax4ynq" path="res://assets/computer.glb" id="18_vxodx"]
 [ext_resource type="PackedScene" uid="uid://cefmrjhp0v4yl" path="res://assets/carton_de_cerveza_corona.glb" id="19_6chsh"]
+[ext_resource type="PackedScene" uid="uid://cldsxpmxauwkp" path="res://scenes/pressure_plate.tscn" id="20_unlte"]
+[ext_resource type="Script" uid="uid://buwge53eplnsx" path="res://Scripts/puzzle_controller.gd" id="21_3ddov"]
+[ext_resource type="Script" uid="uid://dr6mwh56x8vr8" path="res://Scripts/echo_manager.gd" id="23_go15y"]
+[ext_resource type="PackedScene" uid="uid://dir8va1qjyn2f" path="res://scenes/echo.tscn" id="24_s4g8o"]
+[ext_resource type="Script" uid="uid://di3eg86obopef" path="res://Scripts/reset_manager.gd" id="25_7xsrg"]
+[ext_resource type="Script" uid="uid://dv86ualvvgef" path="res://Scripts/loop_timer_ui.gd" id="26_dm5w4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_goiq3"]
 albedo_color = Color(0.20871031, 0.20871007, 0.2087102, 1)
@@ -169,8 +176,10 @@ transform = Transform3D(0.02184934, 0, 0, 0, 0.025674297, 0, 0, 0, 0.043889552, 
 [node name="Sketchfab_Scene2" parent="Modle" unique_id=992128407 instance=ExtResource("1_vbxqm")]
 transform = Transform3D(-0.021849306, 0, 7.583818e-05, 0, 0.0256743, 0, -3.775378e-05, 0, -0.04388948, 9.452656, 0.8728137, -12.393213)
 
-[node name="Sketchfab_Scene3" parent="Modle" unique_id=651869123 instance=ExtResource("1_vthxg")]
+[node name="Door" parent="Modle" unique_id=651869123 groups=["resettable"] instance=ExtResource("1_vthxg")]
 transform = Transform3D(0.014043013, 0, 0, 0, 0.014043013, 0, 0, 0, 0.014043013, 2.6660876, 0.81526875, 1.2632492)
+script = ExtResource("6_yacar")
+open_offset = Vector3(0, 10, 0)
 
 [node name="Sketchfab_Scene22" parent="Modle" unique_id=1150383028 instance=ExtResource("1_vthxg")]
 transform = Transform3D(0.014919495, 0, 0, 0, 0.014919495, 0, 0, 0, 0.014919495, 2.6488419, 1.0372019, -25.132608)
@@ -324,3 +333,43 @@ transform = Transform3D(0.0142743215, 0, 1.2531183, 0, 1.0897231, 0, -1.7625978,
 
 [node name="Sketchfab_Scene10" parent="." unique_id=5301752 instance=ExtResource("10_pp7jt")]
 transform = Transform3D(-1.0917516, 0, -0.0044490695, 0, 1.0897232, 0, 0.003753826, 0, -1.2939533, 1.8576903, 2.3963966, -43.265213)
+
+[node name="PressurePlate" parent="." unique_id=1805411847 groups=["resettable"] instance=ExtResource("20_unlte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.302293, 0.96970856, 5.7768564)
+
+[node name="PressurePlate2" parent="." unique_id=1183648942 groups=["resettable"] instance=ExtResource("20_unlte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.302293, 0.96970856, 9.936227)
+
+[node name="PuzzleController" type="Node3D" parent="." unique_id=520544119 node_paths=PackedStringArray("plate_1", "plate_2", "target_door")]
+script = ExtResource("21_3ddov")
+plate_1 = NodePath("../PressurePlate")
+plate_2 = NodePath("../PressurePlate2")
+target_door = NodePath("../Modle/Door")
+
+[node name="EchoManager" type="Node" parent="." unique_id=40410300 node_paths=PackedStringArray("player_recorder", "loop_timer", "reset_manager")]
+script = ExtResource("23_go15y")
+player_recorder = NodePath("../player/LoopRecorder")
+echo_scene = ExtResource("24_s4g8o")
+loop_timer = NodePath("../LoopTimerUI")
+reset_manager = NodePath("../ResetManager")
+
+[node name="ResetManager" type="Node" parent="." unique_id=1226772398 node_paths=PackedStringArray("player")]
+script = ExtResource("25_7xsrg")
+player = NodePath("../player")
+
+[node name="LoopTimerUI" type="CanvasLayer" parent="." unique_id=108994050 node_paths=PackedStringArray("echo_manager")]
+script = ExtResource("26_dm5w4")
+echo_manager = NodePath("../EchoManager")
+
+[node name="LoopTimerUI" type="Label" parent="LoopTimerUI" unique_id=31707900]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.5
+offset_right = 27.5
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "60"
+
+[editable path="player"]

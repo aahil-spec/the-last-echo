@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://daqy8reln6pum"]
+
+[ext_resource type="Script" uid="uid://c4kdhdaeo8h5i" path="res://Scripts/player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://b03avx38kjvsd" path="res://Scripts/loop_recorder.gd" id="2_g2els"]
+[ext_resource type="Script" uid="uid://0oieg01yr20j" path="res://Scripts/interaction_ray.gd" id="2_qhqgy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
+
+[node name="Player" type="CharacterBody3D" unique_id=98640684]
+script = ExtResource("1_4flbx")
+walk_speed = 4.0
+run_speed = 6.0
+dash_speed = 14.0
+dash_duration = 0.1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=829014061]
+shape = SubResource("CapsuleShape3D_onrkg")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=809732088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86271715, 0)
+
+[node name="InteractionRay" type="RayCast3D" parent="Camera3D" unique_id=1600805208]
+target_position = Vector3(0, 0, -2.5)
+script = ExtResource("2_qhqgy")
+
+[node name="LoopRecorder" type="Node3D" parent="." unique_id=2104792497]
+script = ExtResource("2_g2els")

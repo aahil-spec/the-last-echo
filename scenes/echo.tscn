@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dir8va1qjyn2f"]
+
+[ext_resource type="Script" uid="uid://dt86u1gabkdl0" path="res://Scripts/echo_playback.gd" id="1_u020f"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qgr1w"]
+
+[node name="Echo" type="AnimatableBody3D" unique_id=1557253994]
+script = ExtResource("1_u020f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1289405009]
+shape = SubResource("CapsuleShape3D_qgr1w")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1008715196]
