@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dvs5kf2envl7d" path="res://assets/button_key__factory_8mb.glb" id="6_4oaks"]
 [ext_resource type="PackedScene" uid="uid://26644g76qnsk" path="res://assets/locker_scifi_type_va.glb" id="7_om24m"]
 [ext_resource type="PackedScene" uid="uid://daqy8reln6pum" path="res://scenes/player.tscn" id="8_ccd6n"]
+[ext_resource type="PackedScene" uid="uid://cfke2h88wxktg" path="res://assets/vent_port_blend.glb" id="8_om24m"]
+[ext_resource type="PackedScene" uid="uid://dko10e3hhopwh" path="res://assets/pot_flower_261120.glb" id="10_ccd6n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccd6n"]
 albedo_color = Color(0.17641911, 0.17641908, 0.17641908, 1)
@@ -77,6 +79,15 @@ transform = Transform3D(3.2369998, 0, 0, 0, 3.3075695, 0, 0, 0, 3.2369998, -15.1
 
 [node name="Sketchfab_Scene9" parent="Modle" unique_id=1249868164 instance=ExtResource("7_om24m")]
 transform = Transform3D(3.2369998, 0, 0, 0, 3.3075695, 0, 0, 0, 3.2369998, -13.09545, 1.0253638, 14.216032)
+
+[node name="Sketchfab_Scene10" parent="Modle" unique_id=1220607610 instance=ExtResource("8_om24m")]
+transform = Transform3D(0.054062422, -0.03878512, -1.9874657, -0.009948675, 1.2020367, -0.06432381, 2.5248287, 0.0055669094, 0.042302817, 5.570979, 6.201221, 16.191381)
+
+[node name="Sketchfab_Scene11" parent="Modle" unique_id=857312929 instance=ExtResource("8_om24m")]
+transform = Transform3D(0.054062422, -0.03878512, -1.9874657, -0.009948675, 1.2020367, -0.06432381, 2.5248287, 0.0055669094, 0.042302817, -13.338214, 5.5892296, 16.59386)
+
+[node name="Sketchfab_Scene12" parent="Modle" unique_id=945834779 instance=ExtResource("10_ccd6n")]
+transform = Transform3D(-0.013006591, 0, 0.00025515465, 0, 0.01780081, 0, -0.0023719042, 0, -0.032407656, 8.568951, 1.0023433, 13.70149)
 
 [node name="Player" parent="." unique_id=98640684 instance=ExtResource("8_ccd6n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5039783, 5.6266613, -4.3474236)

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cpylni61wure7" path="res://assets/sci_fi_doorgate_-_environment_asset.glb" id="5_jbm36"]
 [ext_resource type="PackedScene" uid="uid://cis3q5gc5pmfa" path="res://assets/sci-fi_door_loops.glb" id="6_vvp8h"]
 [ext_resource type="PackedScene" uid="uid://cdoas7v3fhs13" path="res://assets/generator.glb" id="7_3mg1d"]
+[ext_resource type="PackedScene" uid="uid://cfke2h88wxktg" path="res://assets/vent_port_blend.glb" id="9_dyv42"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyv42"]
 albedo_color = Color(0.29954746, 0.29954746, 0.29954743, 1)
@@ -144,3 +145,6 @@ transform = Transform3D(5.7997503, 0, 0, 0, 4.744194, 0, 0, 0, 4.6850986, 0.7486
 
 [node name="Sketchfab_Scene14" parent="Models" unique_id=1066797781 instance=ExtResource("5_jbm36")]
 transform = Transform3D(4.5318413, 0, 0.011120925, 0, 1.7812705, 0, -0.028688833, 0, 1.1463614, 6.2427735, 0.3568617, -19.476007)
+
+[node name="Sketchfab_Scene6" parent="Models" unique_id=1220607610 instance=ExtResource("9_dyv42")]
+transform = Transform3D(6.4164305, 0, 0, 0, 1, 0, 0, 0, 1.2688166, 29.085615, 1.2557435, -9.605946)
