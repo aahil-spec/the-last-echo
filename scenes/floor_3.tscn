@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://di3eg86obopef" path="res://Scripts/reset_manager.gd" id="11_yklvg"]
 [ext_resource type="Script" uid="uid://6q1k2c5v2x13" path="res://Scripts/reset_zone.gd" id="12_3mn01"]
 [ext_resource type="PackedScene" uid="uid://d3v8g42d2fck4" path="res://scenes/futuristic_door.scn" id="12_hfwcs"]
+[ext_resource type="Script" uid="uid://cxy4n0k2ki22m" path="res://Scripts/elevator_exit.gd" id="13_hfwcs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0m77k"]
 size = Vector3(113.77461, 200, 200)
@@ -27,6 +28,9 @@ size = Vector3(5.8842163, 1.9794922, 5.528076)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hfwcs"]
 size = Vector3(2.3651123, 4.8685913, 9.026733)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yklvg"]
+size = Vector3(94.686295, 183, 31.309998)
 
 [node name="floor_3" type="Node3D" unique_id=69681479]
 
@@ -189,6 +193,15 @@ shape = SubResource("BoxShape3D_hfwcs")
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" unique_id=332577273]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.892597, 5.2358294, -6.937793)
 shape = SubResource("BoxShape3D_hfwcs")
+
+[node name="ElevatorExit" type="Area3D" parent="." unique_id=1055746906]
+transform = Transform3D(0.014043013, 0, 0, 0, 0.014043013, 0, 0, 0, 0.014043013, -0.23738265, 2.761903, 35.215164)
+script = ExtResource("13_hfwcs")
+next_floor_path = "res://scenes/floor_4.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorExit" unique_id=1494170289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.790024, 53.431885)
+shape = SubResource("BoxShape3D_yklvg")
 
 [connection signal="power_on" from="PowerSwitch" to="CSGCombiner3D/MovingPlatform" method="_on_power_switch_power_on"]
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]

@@ -30,6 +30,6 @@ func execute_loop_reset():
 	if player_recorder:
 		player_recorder.clear_data()
 	if reset_manager:
-		reset_manager.trigger_room_reset()
+		reset_manager.reset_floor()
 	if loop_timer and loop_timer.has_method("reset_clock"):
 		loop_timer.reset_clock()

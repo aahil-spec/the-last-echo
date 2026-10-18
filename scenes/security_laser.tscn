@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://csxf7bsib6awi"]
+
+[ext_resource type="PackedScene" uid="uid://bd7t0suyhex1w" path="res://assets/models/fwprops_security-laser.glb" id="1_3v26g"]
+[ext_resource type="Script" uid="uid://cr5nyqa6bp1w2" path="res://Scripts/security_laser.gd" id="1_3v32v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1n3pu"]
+size = Vector3(15.212891, 3.5322266, 1)
+
+[node name="SecurityLaser" type="Area3D" unique_id=1016897684]
+script = ExtResource("1_3v32v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=187987533]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.043945313, 2.199707, 0.2853825)
+shape = SubResource("BoxShape3D_1n3pu")
+
+[node name="Sketchfab_Scene14" parent="." unique_id=1786532740 instance=ExtResource("1_3v26g")]
+transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 0.53087664, 0.40884995)
+
+[node name="Sketchfab_Scene15" parent="." unique_id=1426770512 instance=ExtResource("1_3v26g")]
+transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 1.1968849, 0.40884995)
+
+[node name="Sketchfab_Scene16" parent="." unique_id=1867392575 instance=ExtResource("1_3v26g")]
+transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 1.86868, 0.40884995)
+
+[node name="Sketchfab_Scene17" parent="." unique_id=1631827226 instance=ExtResource("1_3v26g")]
+transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 2.7889986, 0.40884995)
+
+[node name="Sketchfab_Scene18" parent="." unique_id=1749543138 instance=ExtResource("1_3v26g")]
+transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 3.4904327, 0.40884995)

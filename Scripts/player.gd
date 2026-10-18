@@ -117,3 +117,4 @@ func _unhandled_input(event):
 func restore_baseline():
 	global_position=start_position
 	velocity=Vector3.ZERO
+	is_dashing=false

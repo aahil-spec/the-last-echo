@@ -5,16 +5,61 @@
 [ext_resource type="PackedScene" uid="uid://daqy8reln6pum" path="res://scenes/player.tscn" id="3_m4g8k"]
 [ext_resource type="PackedScene" uid="uid://cdttwj82k6ynm" path="res://assets/models/cctv_console.glb" id="4_g7k8p"]
 [ext_resource type="PackedScene" uid="uid://26644g76qnsk" path="res://assets/models/locker_scifi_type_va.glb" id="5_mlxui"]
-[ext_resource type="PackedScene" uid="uid://bd7t0suyhex1w" path="res://assets/models/fwprops_security-laser.glb" id="6_034ul"]
 [ext_resource type="PackedScene" uid="uid://xadsnhu475g6" path="res://assets/models/sci-fi_security_camera.glb" id="7_0wpoy"]
 [ext_resource type="PackedScene" uid="uid://cis3q5gc5pmfa" path="res://assets/models/sci-fi_door_loops.glb" id="8_ohe13"]
 [ext_resource type="PackedScene" uid="uid://dw7a8w6vd5crd" path="res://assets/models/sci-fi_screen_-_3d_model.glb" id="9_mlxui"]
+[ext_resource type="PackedScene" uid="uid://csxf7bsib6awi" path="res://scenes/security_laser.tscn" id="10_ficys"]
+[ext_resource type="Script" uid="uid://dr6mwh56x8vr8" path="res://Scripts/echo_manager.gd" id="10_k7w6j"]
+[ext_resource type="PackedScene" uid="uid://dir8va1qjyn2f" path="res://scenes/echo.tscn" id="11_ficys"]
+[ext_resource type="Script" uid="uid://di3eg86obopef" path="res://Scripts/reset_manager.gd" id="12_tff4p"]
+[ext_resource type="PackedScene" uid="uid://cyblc03ew54n" path="res://assets/models/lever_-_vurvur_house_5.glb" id="13_ficys"]
+[ext_resource type="Script" uid="uid://dqomf3sgb0o2r" path="res://Scripts/lever.gd" id="14_tff4p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yim34"]
 albedo_color = Color(0.24313726, 0.24313726, 0.24313726, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5vpf"]
 albedo_color = Color(0.24477637, 0.2447764, 0.24477637, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ficys"]
+size = Vector3(185.27428, 197.2581, 73.53797)
+
+[sub_resource type="Animation" id="Animation_tff4p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_model/a046df16bfd548fd9d1ccfd77f56556f_fbx/RootNode/level_Cilindro_1/level_Cilindro_1_001/level_Cilindro_1_001_LEVELTEXTURE_0:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4u0sh"]
+resource_name = "pull"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_model/a046df16bfd548fd9d1ccfd77f56556f_fbx/RootNode/level_Cilindro_1/level_Cilindro_1_001/level_Cilindro_1_001_LEVELTEXTURE_0:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.58),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.1426499, 3.048522e-07, -4.4246016e-07)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mxq0r"]
+_data = {
+&"RESET": SubResource("Animation_tff4p"),
+&"pull": SubResource("Animation_4u0sh")
+}
 
 [node name="floor_5" type="Node3D" unique_id=132132261]
 
@@ -84,72 +129,6 @@ transform = Transform3D(-1.8226807, 0, -0.009416426, 0, 1.9026686, 0, 0.00941642
 [node name="Sketchfab_Scene13" parent="Models" unique_id=1733607361 instance=ExtResource("5_mlxui")]
 transform = Transform3D(-1.8226807, 0, -0.009416426, 0, 1.9026686, 0, 0.009416426, 0, -1.8226807, -5.279326, 0.66879857, 0.69452655)
 
-[node name="Sketchfab_Scene14" parent="Models" unique_id=812244936 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 0.53087664, -3.3916693)
-
-[node name="Sketchfab_Scene15" parent="Models" unique_id=55086088 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 1.1968849, -3.3916693)
-
-[node name="Sketchfab_Scene16" parent="Models" unique_id=1768983410 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 1.86868, -3.3916693)
-
-[node name="Sketchfab_Scene17" parent="Models" unique_id=1640672063 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 2.7889986, -3.3916693)
-
-[node name="Sketchfab_Scene18" parent="Models" unique_id=1524745160 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 3.4904327, -3.3916693)
-
-[node name="Sketchfab_Scene19" parent="Models" unique_id=720259018 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 0.95177937, -12.419178)
-
-[node name="Sketchfab_Scene20" parent="Models" unique_id=400010338 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 1.7903214, -12.419178)
-
-[node name="Sketchfab_Scene21" parent="Models" unique_id=450528504 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 3.4157057, -12.419178)
-
-[node name="Sketchfab_Scene22" parent="Models" unique_id=1232197220 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 2.6759553, -12.419178)
-
-[node name="Sketchfab_Scene23" parent="Models" unique_id=2110415871 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 2.6759553, -20.162472)
-
-[node name="Sketchfab_Scene26" parent="Models" unique_id=1520237308 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 3.4592729, -20.162472)
-
-[node name="Sketchfab_Scene24" parent="Models" unique_id=1399089517 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 1.8309369, -20.162472)
-
-[node name="Sketchfab_Scene25" parent="Models" unique_id=872819323 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 0.7942035, -20.162472)
-
-[node name="Sketchfab_Scene27" parent="Models" unique_id=1649605522 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 0.7942035, -29.18509)
-
-[node name="Sketchfab_Scene31" parent="Models" unique_id=1333220833 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 0.7942035, -35.327713)
-
-[node name="Sketchfab_Scene32" parent="Models" unique_id=1948161270 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 1.7914107, -35.327713)
-
-[node name="Sketchfab_Scene33" parent="Models" unique_id=762501189 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 2.8689463, -35.327713)
-
-[node name="Sketchfab_Scene34" parent="Models" unique_id=1981408654 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 3.9009078, -35.327713)
-
-[node name="Sketchfab_Scene28" parent="Models" unique_id=1006475056 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 1.649678, -29.18509)
-
-[node name="Sketchfab_Scene29" parent="Models" unique_id=1727011068 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 2.6726415, -29.18509)
-
-[node name="Sketchfab_Scene30" parent="Models" unique_id=241872222 instance=ExtResource("6_034ul")]
-transform = Transform3D(2.0060096, 0, 0, 0, 0.09572786, 0, 0, 0, 0.09572786, 0.015813291, 3.5765674, -29.18509)
-
-[node name="Sketchfab_Scene35" parent="Models" unique_id=511964910 instance=ExtResource("7_0wpoy")]
-transform = Transform3D(0.43435866, 0, 0, 0, 0.4325579, -0.039510503, 0, 0.039510503, 0.4325579, 0.0983603, 4.06843, -38.51267)
-
 [node name="Sketchfab_Scene36" parent="Models" unique_id=898435241 instance=ExtResource("7_0wpoy")]
 transform = Transform3D(-0.6649711, 0.00088903465, 0.011258572, -1.1641532e-10, 0.66300315, -0.052354135, -0.01129362, -0.052346587, -0.66290754, 0.013426185, 3.9106672, 8.893527)
 
@@ -182,3 +161,49 @@ transform = Transform3D(0.02325843, 0, 0, 0, 0.039201207, 0, 0, 0, 0.08187456, 3
 
 [node name="Sketchfab_Scene8" parent="Models" unique_id=1019034284 instance=ExtResource("2_m4g8k")]
 transform = Transform3D(0.02325843, 0, 0, 0, 0.039201207, 0, 0, 0, 0.09335034, -3.347648, -0.7957649, -25.890743)
+
+[node name="EchoManager" type="Node" parent="." unique_id=1732624556 node_paths=PackedStringArray("player_recorder", "loop_timer", "reset_manager")]
+script = ExtResource("10_k7w6j")
+player_recorder = NodePath("../Player/LoopRecorder")
+echo_scene = ExtResource("11_ficys")
+loop_timer = NodePath("../Player/PlayerUI")
+reset_manager = NodePath("../ResetManager")
+
+[node name="ResetManager" type="Node" parent="." unique_id=1280364222 node_paths=PackedStringArray("player") groups=["reset_manager"]]
+script = ExtResource("12_tff4p")
+player = NodePath("../Player")
+
+[node name="LaserBarrier" type="Node3D" parent="." unique_id=1043958446 groups=["resettable"]]
+
+[node name="SecurityLaser" parent="LaserBarrier" unique_id=1016897684 groups=["resettable"] instance=ExtResource("10_ficys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13006854, 0.5308764, -3.1247013)
+
+[node name="SecurityLaser2" parent="LaserBarrier" unique_id=404992697 groups=["resettable"] instance=ExtResource("10_ficys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35919762, 0.5308769, -11.371775)
+
+[node name="SecurityLaser3" parent="LaserBarrier" unique_id=1926459698 groups=["resettable"] instance=ExtResource("10_ficys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34120727, 0.5308764, -19.873363)
+
+[node name="SecurityLaser4" parent="LaserBarrier" unique_id=422497864 groups=["resettable"] instance=ExtResource("10_ficys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24996758, 0.5308764, -29.115757)
+
+[node name="Lever" parent="." unique_id=2056720799 instance=ExtResource("13_ficys")]
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 3.388708, 1.9244633, -1.1971791)
+
+[node name="level_Cilindro_1_001_LEVELTEXTURE_0" parent="Lever/Sketchfab_model/a046df16bfd548fd9d1ccfd77f56556f_fbx/RootNode/level_Cilindro_1/level_Cilindro_1_001" parent_id_path=PackedInt32Array(2056720799, 1084978618) index="0" unique_id=166193196]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Lever" unique_id=1414780933]
+transform = Transform3D(-0.006431074, -1.3877788e-17, -9.710651e-10, 3.5286343e-10, -0.0059914575, -0.0023369088, -9.04685e-10, -0.0023369088, 0.0059914575, 0, 0.22767878, 0.32930183)
+script = ExtResource("14_tff4p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lever/StaticBody3D" unique_id=238096621]
+transform = Transform3D(0.9999876, 2.3803182e-13, -4.2632564e-14, -1.5809576e-13, 1, -3.0452175e-15, -6.1106675e-13, -3.0451726e-15, 1, -1.0429077, 32.40805, 0)
+shape = SubResource("BoxShape3D_ficys")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lever" unique_id=1626700172]
+libraries/ = SubResource("AnimationLibrary_mxq0r")
+
+[editable path="Player"]
+[editable path="Player/Visuals/model"]
+[editable path="Lever"]

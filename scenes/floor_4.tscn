@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cldsxpmxauwkp" path="res://scenes/pressure_plate.tscn" id="3_vm50k"]
 [ext_resource type="PackedScene" uid="uid://dgsljblax4ynq" path="res://assets/models/computer.glb" id="4_lw040"]
 [ext_resource type="PackedScene" uid="uid://cpylni61wure7" path="res://assets/models/sci_fi_doorgate_-_environment_asset.glb" id="5_moay1"]
+[ext_resource type="Script" uid="uid://cg65ve0xdtib8" path="res://Scripts/interactable_teleporter.gd" id="6_rmqjm"]
 [ext_resource type="PackedScene" uid="uid://cpehdrut0mjg5" path="res://assets/models/sci-fi_lab_machine.glb" id="6_y6y0d"]
 [ext_resource type="PackedScene" uid="uid://dw7a8w6vd5crd" path="res://assets/models/sci-fi_screen_-_3d_model.glb" id="7_idbjt"]
 [ext_resource type="PackedScene" uid="uid://ce26gnu5kb5oo" path="res://assets/models/scifi_basement_wall.glb" id="8_i8i37"]
@@ -18,6 +19,7 @@
 [ext_resource type="Script" uid="uid://dr6mwh56x8vr8" path="res://Scripts/echo_manager.gd" id="16_gyyrm"]
 [ext_resource type="PackedScene" uid="uid://dir8va1qjyn2f" path="res://scenes/echo.tscn" id="17_mkp8n"]
 [ext_resource type="Script" uid="uid://di3eg86obopef" path="res://Scripts/reset_manager.gd" id="18_rmqjm"]
+[ext_resource type="Script" uid="uid://6q1k2c5v2x13" path="res://Scripts/reset_zone.gd" id="19_mkp8n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeyyr"]
 albedo_color = Color(0, 0, 0, 1)
@@ -39,6 +41,9 @@ size = Vector3(1.0633211, 3.3229465, 1.1540504)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gj0eg"]
 size = Vector3(121.57504, 203.99998, 21.753689)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rmqjm"]
+size = Vector3(50.062614, 1, 24.259888)
 
 [node name="floor_4" type="Node3D" unique_id=557191738]
 
@@ -125,6 +130,8 @@ transform = Transform3D(0.005986402, 0, 1.5713025, 0, 1, 0, -0.9999821, 0, 0.009
 
 [node name="StaticBody3D" type="StaticBody3D" parent="models/Sketchfab_Scene" unique_id=148449153]
 transform = Transform3D(1, 0, 0, 2.4026121e-17, 0.10820395, 0.9941287, 0, -0.99412876, 0.10820395, 0, 0.49639508, -0.09030616)
+script = ExtResource("6_rmqjm")
+target_floor_path = "uid://c4sbdotj1evi2"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="models/Sketchfab_Scene/StaticBody3D" unique_id=229273316]
 transform = Transform3D(1, 1.2572855e-07, -2.3515895e-08, -6.239861e-08, 1.0000056, -9.2612936e-08, -4.4237822e-09, 1.3827475e-06, 1.000033, 0.0957737, 0.37192488, 0.19312918)
@@ -237,8 +244,16 @@ reset_manager = NodePath("../ResetManager")
 script = ExtResource("18_rmqjm")
 player = NodePath("../Player")
 
+[node name="ResetZone" type="Area3D" parent="." unique_id=2065436452]
+script = ExtResource("19_mkp8n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResetZone" unique_id=1315471835]
+transform = Transform3D(-0.15857169, 0, 0.9873475, 0, 1, 0, -0.9873475, 0, -0.15857169, 3.0639777, -4.300107, 11.8839035)
+shape = SubResource("BoxShape3D_rmqjm")
+
 [connection signal="activated" from="PressurePlate" to="Door" method="_on_pressure_plate_activated"]
 [connection signal="deactivated" from="PressurePlate" to="Door" method="_on_pressure_plate_deactivated"]
+[connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 
 [editable path="models/Sketchfab_Scene24"]
 [editable path="Player"]
