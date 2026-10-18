@@ -8,18 +8,24 @@ extends CharacterBody3D
 @export var dash_duration = 0.2
 @export var mouse_sensitivity = 0.002
 
-@onready var camera = $Camera3D
+@onready var camera_pivot=$CameraPivot
+@onready var spring_arm=$CameraPivot/SpringArm3D
+@onready var camera = $CameraPivot/SpringArm3D/Camera3D
+@onready var visuals=$Visuals
+@onready var animation_player=$Visuals/model/AnimationPlayer
 @onready var interaction_prompt=$PlayerUI/InteractionPrompt
-@onready var interaction_ray=$Camera3D/InteractionRay
+@onready var interaction_ray=$CameraPivot/SpringArm3D/Camera3D/InteractionRay
 @onready var loop_recorder=$LoopRecorder
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var dash_timer = 0.0
 var is_dashing = false
-
+var is_third_person=false
 func _ready():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
+		spring_arm.spring_length=0.0
+		if visuals:
+			visuals.visible=false
 func _physics_process(delta):
 		if not is_on_floor():
 				velocity.y -= gravity * delta
@@ -46,6 +52,16 @@ func _physics_process(delta):
 				velocity.x = move_toward(velocity.x, 0, current_speed)
 				velocity.z = move_toward(velocity.z, 0, current_speed)
 		move_and_slide()
+		if animation_player and animation_player.current_animation!="ButtonPushing":
+			if not is_on_floor():
+				animation_player.play("jump")
+			elif direction==Vector3.ZERO:
+				animation_player.play("Idle")
+			elif current_speed==run_speed:
+				animation_player.play("Running")
+			else:
+				animation_player.play("Walking")
+			
 		if interaction_prompt:
 			interaction_prompt.visible=false
 			if interaction_ray.is_colliding():
@@ -55,14 +71,25 @@ func _physics_process(delta):
 func _unhandled_input(event):
 		if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 				rotate_y(-event.relative.x * mouse_sensitivity)
-				camera.rotate_x(-event.relative.y * mouse_sensitivity)
-				camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
-		
+				camera_pivot.rotate_x(-event.relative.y * mouse_sensitivity)
+				camera_pivot.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+		if event is InputEventKey and event.pressed and not event.echo and event.keycode ==KEY_T:
+			is_third_person=!is_third_person
+			if is_third_person:
+				spring_arm.spring_length=1.5
+				if visuals:
+					visuals.visible=true
+			else:
+				spring_arm.spring_length=0.0
+				if visuals:
+					visuals.visible=false
+				
 		if event.is_action_pressed("ui_cancel"):
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		if event is InputEventMouseButton:
 			if event.button_index==MOUSE_BUTTON_RIGHT and event.pressed:
 				Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
+				
 		if event is InputEventKey and event.pressed and not event.echo and event.keycode==KEY_E:
 			interaction_ray.force_raycast_update()
 			if interaction_ray.is_colliding():
@@ -73,6 +100,8 @@ func _unhandled_input(event):
 				elif target.get_parent().has_method("interact"):
 					final_target=target.get_parent()
 				if final_target:
+					if animation_player:
+						animation_player.play("ButtonPushing")
 					final_target.interact()
 					if loop_recorder:
 						loop_recorder.record_interaction(target)

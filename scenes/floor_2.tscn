@@ -1,22 +1,26 @@
 [gd_scene format=3 uid="uid://bc4idid6ebok1"]
 
-[ext_resource type="Texture2D" uid="uid://duvsjjurcnar0" path="res://assets/lab_room_6.png" id="1_6ib5v"]
+[ext_resource type="Texture2D" uid="uid://duvsjjurcnar0" path="res://assets/models/lab_room_6.png" id="1_6ib5v"]
 [ext_resource type="PackedScene" uid="uid://daqy8reln6pum" path="res://scenes/player.tscn" id="1_xtp6k"]
-[ext_resource type="PackedScene" uid="uid://b2vxlphpf4tis" path="res://assets/sci-fi_wall (3).glb" id="2_ngqod"]
-[ext_resource type="PackedScene" uid="uid://djwmrcd5cy37l" path="res://assets/lab_room.glb" id="3_24im6"]
-[ext_resource type="PackedScene" uid="uid://qcabubkeu4ar" path="res://assets/small_show_room.glb" id="5_xf3kq"]
-[ext_resource type="PackedScene" uid="uid://0qoq16mepyy7" path="res://assets/stairs.glb" id="6_8t8eu"]
-[ext_resource type="PackedScene" uid="uid://dvs5kf2envl7d" path="res://assets/button_key__factory_8mb.glb" id="7_2aqei"]
-[ext_resource type="PackedScene" uid="uid://cpylni61wure7" path="res://assets/sci_fi_doorgate_-_environment_asset.glb" id="8_13ro5"]
-[ext_resource type="PackedScene" uid="uid://ck0vi0taimj1j" path="res://assets/sci-fi_door_panel.glb" id="9_iufnr"]
-[ext_resource type="PackedScene" uid="uid://d1j4poxnu7s7l" path="res://assets/cloning_machine.glb" id="10_dn0rh"]
-[ext_resource type="PackedScene" uid="uid://cus6gaj7qxu7x" path="res://assets/futuristic_sci-fi_planet_scanner_radar_thing.glb" id="11_hoadi"]
-[ext_resource type="PackedScene" uid="uid://26644g76qnsk" path="res://assets/locker_scifi_type_va.glb" id="12_34sd5"]
-[ext_resource type="PackedScene" uid="uid://cfke2h88wxktg" path="res://assets/vent_port_blend.glb" id="13_hoadi"]
-[ext_resource type="PackedScene" uid="uid://dbdpedykri3u5" path="res://assets/laboratory_door.glb" id="14_6asnv"]
+[ext_resource type="PackedScene" uid="uid://b2vxlphpf4tis" path="res://assets/models/sci-fi_wall (3).glb" id="2_ngqod"]
+[ext_resource type="PackedScene" uid="uid://djwmrcd5cy37l" path="res://assets/models/lab_room.glb" id="3_24im6"]
+[ext_resource type="PackedScene" uid="uid://qcabubkeu4ar" path="res://assets/models/small_show_room.glb" id="5_xf3kq"]
+[ext_resource type="PackedScene" uid="uid://0qoq16mepyy7" path="res://assets/models/stairs.glb" id="6_8t8eu"]
+[ext_resource type="PackedScene" uid="uid://dvs5kf2envl7d" path="res://assets/models/button_key__factory_8mb.glb" id="7_2aqei"]
+[ext_resource type="PackedScene" uid="uid://cpylni61wure7" path="res://assets/models/sci_fi_doorgate_-_environment_asset.glb" id="8_13ro5"]
+[ext_resource type="PackedScene" uid="uid://ck0vi0taimj1j" path="res://assets/models/sci-fi_door_panel.glb" id="9_iufnr"]
+[ext_resource type="PackedScene" uid="uid://d1j4poxnu7s7l" path="res://assets/models/cloning_machine.glb" id="10_dn0rh"]
+[ext_resource type="PackedScene" uid="uid://cus6gaj7qxu7x" path="res://assets/models/futuristic_sci-fi_planet_scanner_radar_thing.glb" id="11_hoadi"]
+[ext_resource type="PackedScene" uid="uid://26644g76qnsk" path="res://assets/models/locker_scifi_type_va.glb" id="12_34sd5"]
+[ext_resource type="PackedScene" uid="uid://cfke2h88wxktg" path="res://assets/models/vent_port_blend.glb" id="13_hoadi"]
+[ext_resource type="PackedScene" uid="uid://dbdpedykri3u5" path="res://assets/models/laboratory_door.glb" id="14_6asnv"]
 [ext_resource type="Script" uid="uid://c8ppr7fpndyfj" path="res://Scripts/powered_door.gd" id="14_fww25"]
 [ext_resource type="Script" uid="uid://cxy4n0k2ki22m" path="res://Scripts/elevator_exit.gd" id="15_vidrn"]
 [ext_resource type="Script" uid="uid://dclbu8qbt1slj" path="res://Scripts/power_switch.gd" id="16_fww25"]
+[ext_resource type="Script" uid="uid://dr6mwh56x8vr8" path="res://Scripts/echo_manager.gd" id="18_dk70e"]
+[ext_resource type="PackedScene" uid="uid://dir8va1qjyn2f" path="res://scenes/echo.tscn" id="19_cy1jc"]
+[ext_resource type="Script" uid="uid://di3eg86obopef" path="res://Scripts/reset_manager.gd" id="20_swk8j"]
+[ext_resource type="Script" uid="uid://dv86ualvvgef" path="res://Scripts/loop_timer_ui.gd" id="21_5ie44"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xf3kq"]
 albedo_texture = ExtResource("1_6ib5v")
@@ -375,8 +379,35 @@ shape = SubResource("BoxShape3D_cy1jc")
 transform = Transform3D(-0.10558722, 0, -0.99441, 0, 1, 0, 0.99441, 0, -0.10558722, 2.1546135, 3.8768628, -7.599201)
 shape = SubResource("BoxShape3D_cy1jc")
 
+[node name="EchoManager" type="Node" parent="." unique_id=1590277478 node_paths=PackedStringArray("player_recorder", "loop_timer", "reset_manager")]
+script = ExtResource("18_dk70e")
+player_recorder = NodePath("../player/LoopRecorder")
+echo_scene = ExtResource("19_cy1jc")
+loop_timer = NodePath("../LoopTimerUI")
+reset_manager = NodePath("../ResetManager")
+
+[node name="ResetManager" type="Node" parent="." unique_id=197650064 node_paths=PackedStringArray("player")]
+script = ExtResource("20_swk8j")
+player = NodePath("../player")
+
+[node name="LoopTimerUI" type="CanvasLayer" parent="." unique_id=1187921702 node_paths=PackedStringArray("echo_manager")]
+script = ExtResource("21_5ie44")
+echo_manager = NodePath("../EchoManager")
+
+[node name="LoopTimerUI" type="Label" parent="LoopTimerUI" unique_id=1946139408]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.5
+offset_right = 27.5
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "60"
+
 [connection signal="power_off" from="PowerSwitch" to="PowerSwitchDoor" method="_on_power_switch_power_off"]
 [connection signal="power_on" from="PowerSwitch" to="PowerSwitchDoor" method="_on_power_switch_power_on"]
 
+[editable path="player"]
 [editable path="Sketchfab_Scene10"]
 [editable path="Sketchfab_Scene12"]

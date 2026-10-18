@@ -15,7 +15,7 @@ func _process(delta):
 func force_timeout():
 	time_left=60.0
 	if echo_manager:
-		echo_manager.spawn_echo()
+		echo_manager.timeout_reset()
 		
 func reset_clock():
 	time_left=60.0

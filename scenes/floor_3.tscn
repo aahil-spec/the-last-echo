@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://mtvs7m83p4fg"]
 
-[ext_resource type="PackedScene" uid="uid://bmr1xombbfj11" path="res://assets/stairs (1).glb" id="1_a2b10"]
-[ext_resource type="PackedScene" uid="uid://b2vxlphpf4tis" path="res://assets/sci-fi_wall (3).glb" id="2_l5xn4"]
-[ext_resource type="PackedScene" uid="uid://cis3q5gc5pmfa" path="res://assets/sci-fi_door_loops.glb" id="3_lh5pq"]
-[ext_resource type="PackedScene" uid="uid://cpylni61wure7" path="res://assets/sci_fi_doorgate_-_environment_asset.glb" id="4_l5xn4"]
+[ext_resource type="PackedScene" uid="uid://bmr1xombbfj11" path="res://assets/models/stairs (1).glb" id="1_a2b10"]
+[ext_resource type="PackedScene" uid="uid://b2vxlphpf4tis" path="res://assets/models/sci-fi_wall (3).glb" id="2_l5xn4"]
+[ext_resource type="PackedScene" uid="uid://cis3q5gc5pmfa" path="res://assets/models/sci-fi_door_loops.glb" id="3_lh5pq"]
+[ext_resource type="PackedScene" uid="uid://cpylni61wure7" path="res://assets/models/sci_fi_doorgate_-_environment_asset.glb" id="4_l5xn4"]
 
 [node name="floor_3" type="Node3D" unique_id=69681479]
 

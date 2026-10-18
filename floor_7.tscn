@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://dlwhksw8obren"]
 
 [ext_resource type="PackedScene" uid="uid://daqy8reln6pum" path="res://scenes/player.tscn" id="1_k0tf8"]
-[ext_resource type="PackedScene" uid="uid://b2vxlphpf4tis" path="res://assets/sci-fi_wall (3).glb" id="2_v7alj"]
-[ext_resource type="PackedScene" uid="uid://bd7t0suyhex1w" path="res://assets/fwprops_security-laser.glb" id="3_2hia8"]
-[ext_resource type="PackedScene" uid="uid://dj06jemu5nldv" path="res://assets/scy-fi_land_mine.glb" id="4_dyv42"]
-[ext_resource type="PackedScene" uid="uid://dw7a8w6vd5crd" path="res://assets/sci-fi_screen_-_3d_model.glb" id="5_2hia8"]
-[ext_resource type="PackedScene" uid="uid://cpylni61wure7" path="res://assets/sci_fi_doorgate_-_environment_asset.glb" id="5_jbm36"]
-[ext_resource type="PackedScene" uid="uid://cis3q5gc5pmfa" path="res://assets/sci-fi_door_loops.glb" id="6_vvp8h"]
-[ext_resource type="PackedScene" uid="uid://cdoas7v3fhs13" path="res://assets/generator.glb" id="7_3mg1d"]
-[ext_resource type="PackedScene" uid="uid://cfke2h88wxktg" path="res://assets/vent_port_blend.glb" id="9_dyv42"]
+[ext_resource type="PackedScene" uid="uid://b2vxlphpf4tis" path="res://assets/models/sci-fi_wall (3).glb" id="2_v7alj"]
+[ext_resource type="PackedScene" uid="uid://bd7t0suyhex1w" path="res://assets/models/fwprops_security-laser.glb" id="3_2hia8"]
+[ext_resource type="PackedScene" uid="uid://dj06jemu5nldv" path="res://assets/models/scy-fi_land_mine.glb" id="4_dyv42"]
+[ext_resource type="PackedScene" uid="uid://dw7a8w6vd5crd" path="res://assets/models/sci-fi_screen_-_3d_model.glb" id="5_2hia8"]
+[ext_resource type="PackedScene" uid="uid://cpylni61wure7" path="res://assets/models/sci_fi_doorgate_-_environment_asset.glb" id="5_jbm36"]
+[ext_resource type="PackedScene" uid="uid://cis3q5gc5pmfa" path="res://assets/models/sci-fi_door_loops.glb" id="6_vvp8h"]
+[ext_resource type="PackedScene" uid="uid://cdoas7v3fhs13" path="res://assets/models/generator.glb" id="7_3mg1d"]
+[ext_resource type="PackedScene" uid="uid://cfke2h88wxktg" path="res://assets/models/vent_port_blend.glb" id="9_dyv42"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyv42"]
 albedo_color = Color(0.29954746, 0.29954746, 0.29954743, 1)

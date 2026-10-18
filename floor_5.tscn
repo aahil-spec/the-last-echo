@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://c4sbdotj1evi2"]
 
-[ext_resource type="PackedScene" uid="uid://b2vxlphpf4tis" path="res://assets/sci-fi_wall (3).glb" id="1_rbagy"]
-[ext_resource type="PackedScene" uid="uid://ce26gnu5kb5oo" path="res://assets/scifi_basement_wall.glb" id="2_m4g8k"]
+[ext_resource type="PackedScene" uid="uid://b2vxlphpf4tis" path="res://assets/models/sci-fi_wall (3).glb" id="1_rbagy"]
+[ext_resource type="PackedScene" uid="uid://ce26gnu5kb5oo" path="res://assets/models/scifi_basement_wall.glb" id="2_m4g8k"]
 [ext_resource type="PackedScene" uid="uid://daqy8reln6pum" path="res://scenes/player.tscn" id="3_m4g8k"]
-[ext_resource type="PackedScene" uid="uid://cdttwj82k6ynm" path="res://assets/cctv_console.glb" id="4_g7k8p"]
-[ext_resource type="PackedScene" uid="uid://26644g76qnsk" path="res://assets/locker_scifi_type_va.glb" id="5_mlxui"]
-[ext_resource type="PackedScene" uid="uid://bd7t0suyhex1w" path="res://assets/fwprops_security-laser.glb" id="6_034ul"]
-[ext_resource type="PackedScene" uid="uid://xadsnhu475g6" path="res://assets/sci-fi_security_camera.glb" id="7_0wpoy"]
-[ext_resource type="PackedScene" uid="uid://cis3q5gc5pmfa" path="res://assets/sci-fi_door_loops.glb" id="8_ohe13"]
-[ext_resource type="PackedScene" uid="uid://dw7a8w6vd5crd" path="res://assets/sci-fi_screen_-_3d_model.glb" id="9_mlxui"]
+[ext_resource type="PackedScene" uid="uid://cdttwj82k6ynm" path="res://assets/models/cctv_console.glb" id="4_g7k8p"]
+[ext_resource type="PackedScene" uid="uid://26644g76qnsk" path="res://assets/models/locker_scifi_type_va.glb" id="5_mlxui"]
+[ext_resource type="PackedScene" uid="uid://bd7t0suyhex1w" path="res://assets/models/fwprops_security-laser.glb" id="6_034ul"]
+[ext_resource type="PackedScene" uid="uid://xadsnhu475g6" path="res://assets/models/sci-fi_security_camera.glb" id="7_0wpoy"]
+[ext_resource type="PackedScene" uid="uid://cis3q5gc5pmfa" path="res://assets/models/sci-fi_door_loops.glb" id="8_ohe13"]
+[ext_resource type="PackedScene" uid="uid://dw7a8w6vd5crd" path="res://assets/models/sci-fi_screen_-_3d_model.glb" id="9_mlxui"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yim34"]
 albedo_color = Color(0.24313726, 0.24313726, 0.24313726, 1)
