@@ -410,11 +410,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.302293, 0.96970856, 4.18434
 [node name="PressurePlate2" parent="." unique_id=1183648942 groups=["resettable"] instance=ExtResource("20_unlte")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.302293, 0.96970856, 9.936227)
 
-[node name="PuzzleController" type="Node3D" parent="." unique_id=520544119 node_paths=PackedStringArray("plate_1", "plate_2", "target_door")]
+[node name="PuzzleController" type="Node3D" parent="." unique_id=520544119]
 script = ExtResource("21_3ddov")
-plate_1 = NodePath("../PressurePlate")
-plate_2 = NodePath("../PressurePlate2")
-target_door = NodePath("../Modle/Door")
 
 [node name="EchoManager" type="Node" parent="." unique_id=40410300 node_paths=PackedStringArray("player_recorder", "loop_timer", "reset_manager")]
 script = ExtResource("23_go15y")

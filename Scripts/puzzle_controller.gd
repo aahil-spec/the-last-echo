@@ -3,7 +3,7 @@ extends Node3D
 
 @export var plate_1:PressurePlate
 @export var plate_2:PressurePlate
-@export var target_door:Door
+@export var target_door:Node3D
 
 var plate_1_active:bool=false
 var plate_2_actve:bool=false

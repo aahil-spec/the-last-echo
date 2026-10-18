@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c4kdhdaeo8h5i" path="res://Scripts/player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://b03avx38kjvsd" path="res://Scripts/loop_recorder.gd" id="2_g2els"]
-[ext_resource type="Script" uid="uid://0oieg01yr20j" path="res://Scripts/interaction_ray.gd" id="2_qhqgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 
@@ -21,7 +20,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86271715, 0)
 
 [node name="InteractionRay" type="RayCast3D" parent="Camera3D" unique_id=1600805208]
 target_position = Vector3(0, 0, -2.5)
-script = ExtResource("2_qhqgy")
 
 [node name="LoopRecorder" type="Node3D" parent="." unique_id=2104792497]
 script = ExtResource("2_g2els")
@@ -42,3 +40,17 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="InteractionPrompt" type="Label" parent="PlayerUI" unique_id=124372122]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.5
+offset_top = -23.0
+offset_right = 70.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press E to Interact"

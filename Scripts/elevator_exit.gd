@@ -8,5 +8,4 @@ func _ready():
 	
 func _on_body_entered(body):
 	if body.name=="player":
-		print("Puzzle complete! Loading next floor...")
-		get_tree().change_scene_to_file(next_floor_path)
+		get_tree().call_deferred("change_scene_to_file",next_floor_path)
