@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dw7a8w6vd5crd" path="res://assets/sci-fi_screen_-_3d_model.glb" id="7_idbjt"]
 [ext_resource type="PackedScene" uid="uid://ce26gnu5kb5oo" path="res://assets/scifi_basement_wall.glb" id="8_i8i37"]
 [ext_resource type="PackedScene" uid="uid://b2vxlphpf4tis" path="res://assets/sci-fi_wall (3).glb" id="9_07wtl"]
+[ext_resource type="PackedScene" uid="uid://cfke2h88wxktg" path="res://assets/vent_port_blend.glb" id="10_moay1"]
+[ext_resource type="PackedScene" uid="uid://c5ryykgxcmi0p" path="res://assets/vent.glb" id="11_y6y0d"]
+[ext_resource type="PackedScene" uid="uid://dbdpedykri3u5" path="res://assets/laboratory_door.glb" id="12_idbjt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeyyr"]
 albedo_color = Color(0, 0, 0, 1)
@@ -139,3 +142,15 @@ transform = Transform3D(0.02818396, 0, 1.1640301, 0, 1.1643713, 0, -1.1640301, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9551687, 5.973403)
 light_energy = 5.0
 omni_range = 4096.0
+
+[node name="Sketchfab_Scene" parent="." unique_id=1220607610 instance=ExtResource("10_moay1")]
+transform = Transform3D(0.20775634, 0, 0.99574566, 0, 1, 0, -2.245083, 0, 0.09214468, 1.1577506, 0.598953, -5.0844364)
+
+[node name="Sketchfab_Scene2" parent="." unique_id=120487149 instance=ExtResource("11_y6y0d")]
+transform = Transform3D(0.008428275, 0, 0, 0, 0.008428275, 0, 0, 0, 0.008428275, -5.6502876, 0.8500967, -2.704845)
+
+[node name="Sketchfab_Scene3" parent="." unique_id=1598311365 instance=ExtResource("11_y6y0d")]
+transform = Transform3D(0.008428275, 0, 0, 0, 0.008428275, 0, 0, 0, 0.008428275, 0.20555544, 0.8500967, -2.704845)
+
+[node name="Sketchfab_Scene4" parent="." unique_id=651869123 instance=ExtResource("12_idbjt")]
+transform = Transform3D(-0.014973666, 0, -0.00010950383, 0, 0.014974065, 0, 0.00010950383, 0, -0.014973666, 9.443505, 0.39973998, 19.489166)
