@@ -7,7 +7,7 @@ var door_tween:Tween
 
 func _ready():
 	baseline_posirion=position
-	
+	add_to_group("resettable")
 func _on_power_switch_power_on():
 	if not is_open:
 		is_open=true

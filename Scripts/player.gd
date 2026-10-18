@@ -24,6 +24,7 @@ var is_third_person=false
 func _ready():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		spring_arm.spring_length=0.0
+		spring_arm.add_excluded_object(self.get_rid())
 		if visuals:
 			visuals.visible=false
 func _physics_process(delta):
@@ -71,8 +72,8 @@ func _physics_process(delta):
 func _unhandled_input(event):
 		if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 				rotate_y(-event.relative.x * mouse_sensitivity)
-				camera_pivot.rotate_x(-event.relative.y * mouse_sensitivity)
-				camera_pivot.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+				camera_pivot.rotation.x-=event.relative.y * mouse_sensitivity
+				camera_pivot.rotation.x = clamp(camera_pivot.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 		if event is InputEventKey and event.pressed and not event.echo and event.keycode ==KEY_T:
 			is_third_person=!is_third_person
 			if is_third_person:
@@ -104,5 +105,5 @@ func _unhandled_input(event):
 						animation_player.play("ButtonPushing")
 					final_target.interact()
 					if loop_recorder:
-						loop_recorder.record_interaction(target)
+						loop_recorder.record_interaction(final_target)
 		

@@ -40,6 +40,7 @@ mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="InteractionPrompt" type="Label" parent="PlayerUI" unique_id=124372122]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -50,6 +51,7 @@ offset_top = -23.0
 offset_right = 70.5
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_font_sizes/font_size = 26
 text = "Press E to Interact"
 
 [node name="Visuals" type="Node3D" parent="." unique_id=501865092]
@@ -113,12 +115,11 @@ bones/64/rotation = Quaternion(0.5050736, -0.016827593, 0.044145856, 0.8617823)
 bones/65/rotation = Quaternion(0.2927756, -0.014789963, -0.0045745117, 0.9560559)
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=950606618]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7395549, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6309265, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=658702537]
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=809732088]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035873353, -0.017557144, -0.103018165)
 
 [node name="InteractionRay" type="RayCast3D" parent="CameraPivot/SpringArm3D/Camera3D" unique_id=1600805208]
 target_position = Vector3(0, 0, -2.5)
