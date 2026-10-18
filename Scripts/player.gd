@@ -50,12 +50,12 @@ func _physics_process(delta):
 			interaction_prompt.visible=false
 			if interaction_ray.is_colliding():
 				var target=interaction_ray.get_collider()
-				if target is Interactable:
+				if target.has_method("interact") or target.get_parent().has_method("interact"):
 					interaction_prompt.visible=true
 func _unhandled_input(event):
 		if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 				rotate_y(-event.relative.x * mouse_sensitivity)
-				camera.rotate_x(-event.relative.y *  mouse_sensitivity)
+				camera.rotate_x(-event.relative.y * mouse_sensitivity)
 				camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 		
 		if event.is_action_pressed("ui_cancel"):
@@ -67,8 +67,13 @@ func _unhandled_input(event):
 			interaction_ray.force_raycast_update()
 			if interaction_ray.is_colliding():
 				var target=interaction_ray.get_collider()
-				if target is Interactable:
-					target.interact()
+				var final_target=null
+				if target.has_method("interact"):
+					final_target=target
+				elif target.get_parent().has_method("interact"):
+					final_target=target.get_parent()
+				if final_target:
+					final_target.interact()
 					if loop_recorder:
 						loop_recorder.record_interaction(target)
 		

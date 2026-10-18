@@ -14,7 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://26644g76qnsk" path="res://assets/locker_scifi_type_va.glb" id="12_34sd5"]
 [ext_resource type="PackedScene" uid="uid://cfke2h88wxktg" path="res://assets/vent_port_blend.glb" id="13_hoadi"]
 [ext_resource type="PackedScene" uid="uid://dbdpedykri3u5" path="res://assets/laboratory_door.glb" id="14_6asnv"]
-[ext_resource type="Script" uid="uid://blus2p84ra46" path="res://Scripts/door.gd" id="15_fww25"]
+[ext_resource type="Script" uid="uid://c8ppr7fpndyfj" path="res://Scripts/powered_door.gd" id="14_fww25"]
+[ext_resource type="Script" uid="uid://cxy4n0k2ki22m" path="res://Scripts/elevator_exit.gd" id="15_vidrn"]
 [ext_resource type="Script" uid="uid://dclbu8qbt1slj" path="res://Scripts/power_switch.gd" id="16_fww25"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xf3kq"]
@@ -80,6 +81,12 @@ size = Vector3(113.77461, 200, 200)
 [sub_resource type="BoxShape3D" id="BoxShape3D_kxgs6"]
 size = Vector3(76.03126, 95.455795, 95.455795)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0l1lh"]
+size = Vector3(94.686295, 183, 31.309998)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cy1jc"]
+size = Vector3(1.5791016, 9.157669, 7.5249634)
+
 [node name="floor_2" type="Node3D" unique_id=1390886355]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=650615703]
@@ -124,6 +131,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.181496, 5.124485, -57.648
 size = Vector3(19.18042, 1.2377319, 0.12902832)
 material = SubResource("StandardMaterial3D_hoadi")
 
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1434525876]
+transform = Transform3D(0.014043013, 0, 0, 0, 0.014043013, 0, 0, 0, 0.014043013, -19.724632, 1.9866434, -16.266129)
+operation = 2
+size = Vector3(120.83972, 197.54707, 362.7771)
+
 [node name="player" parent="." unique_id=98640684 instance=ExtResource("1_xtp6k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.784153, 3.0362444, -25.008219)
 
@@ -153,9 +165,10 @@ omni_range = 4096.0
 [node name="Sketchfab_Scene8" parent="." unique_id=1855725000 instance=ExtResource("3_24im6")]
 transform = Transform3D(0.90663713, 0, 0, 0, 0.6482687, 0, 0, 0, 0.70295084, -33.93672, 0.8124211, -20.099934)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_Scene8/Sketchfab_model/root/GLTF_SceneRootNode/Room_0/Object_4" parent_id_path=PackedInt32Array(1855725000, 57358198) index="0" unique_id=970989670]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_Scene8" unique_id=970989670]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 5, 4.9999995, -5.000002)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_Scene8/Sketchfab_model/root/GLTF_SceneRootNode/Room_0/Object_4/StaticBody3D" unique_id=1664463791]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_Scene8/StaticBody3D" unique_id=1664463791]
 shape = SubResource("ConvexPolygonShape3D_dk70e")
 
 [node name="Sketchfab_Scene9" parent="." unique_id=243652563 instance=ExtResource("5_xf3kq")]
@@ -201,9 +214,6 @@ transform = Transform3D(0.028973348, 0, -2.7277482, 0, 3.2388892, 0, 4.8539095, 
 
 [node name="Sketchfab_Scene15" parent="." unique_id=883838013 instance=ExtResource("8_13ro5")]
 transform = Transform3D(2.9075077, 0, 0, 0, 3.957299, 0, 0, 0, 2.4760993, -22.09338, 0.31184477, -61.83379)
-
-[node name="Sketchfab_Scene30" parent="." unique_id=2005359923 instance=ExtResource("8_13ro5")]
-transform = Transform3D(2.9075077, 0, 0, 0, 3.957299, 0, 0, 0, 2.4760993, -22.09338, 0.31184477, -18.138943)
 
 [node name="Sketchfab_Scene4" parent="." unique_id=1767955193 instance=ExtResource("9_iufnr")]
 transform = Transform3D(0.0006715461, 0, -0.011260249, 0, 0.011280257, 0, 0.011260249, 0, 0.0006715461, -27.178616, 5.0095763, -61.391933)
@@ -312,14 +322,14 @@ transform = Transform3D(2.5787401, 0, 0, 0, 1.2258129, 0, 0, 0, 1.1383543, -6.70
 [node name="Sketchfab_Scene32" parent="." unique_id=170395421 instance=ExtResource("13_hoadi")]
 transform = Transform3D(-0.094584644, 0, 1.1375883, 0, 1.2258129, 0, -2.5770051, 0, -0.041753203, -14.769535, 5.446155, -45.793713)
 
-[node name="Door" parent="." unique_id=505432707 groups=["resettable"] instance=ExtResource("14_6asnv")]
-transform = Transform3D(0.014043013, 0, 0, 0, 0.014043013, 0, 0, 0, 0.014043013, -22.316082, 0.81526875, -21.946829)
-script = ExtResource("15_fww25")
+[node name="PowerSwitchDoor" parent="." unique_id=505432707 groups=["resettable"] instance=ExtResource("14_6asnv")]
+transform = Transform3D(0.014043013, 0, 0, 0, 0.014043013, 0, 0, 0, 0.014043013, -22.316082, 0.5253284, -17.419674)
+script = ExtResource("14_fww25")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Door/Sketchfab_model/Collada visual scene group/Low/Frame_Low/defaultMaterial4" parent_id_path=PackedInt32Array(505432707, 2112727898) index="0" unique_id=1494171585]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.99997, 101.99999, 7.1318913)
+[node name="StaticBody3D" type="StaticBody3D" parent="PowerSwitchDoor" unique_id=1494171585]
+transform = Transform3D(1, 0, 0, 0, 1, -4.3711395e-08, 0, 4.3711395e-08, 1, 185, 102, 7.131836)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/Sketchfab_model/Collada visual scene group/Low/Frame_Low/defaultMaterial4/StaticBody3D" unique_id=2088498877]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PowerSwitchDoor/StaticBody3D" unique_id=2088498877]
 shape = SubResource("BoxShape3D_vidrn")
 
 [node name="PowerSwitch" parent="." unique_id=181083820 instance=ExtResource("7_2aqei")]
@@ -337,7 +347,36 @@ shape = SubResource("BoxShape3D_1qdjp")
 transform = Transform3D(0.99999994, -2.0679515e-25, -9.313226e-10, 2.0679515e-25, 1, -1.6018546e-23, 9.313226e-10, -1.6018546e-23, 0.99999994, 93.796875, 0, 0)
 shape = SubResource("BoxShape3D_kxgs6")
 
-[editable path="Sketchfab_Scene8"]
+[node name="ElevatorExit" type="Area3D" parent="." unique_id=2037650987]
+transform = Transform3D(0.014043013, 0, 0, 0, 0.014043013, 0, 0, 0, 0.014043013, -22.239689, 0.8420791, -18.933922)
+script = ExtResource("15_vidrn")
+next_floor_path = "res://scenes/floor_3.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorExit" unique_id=1801058777]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.30481, 97.33307, 154.05481)
+shape = SubResource("BoxShape3D_0l1lh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=125649157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.817467, 1.0521514, -53.2664)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=936631748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.092285156, 3.1615756, -3.0152893)
+shape = SubResource("BoxShape3D_cy1jc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=814197440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.184433, 3.1615756, -3.0152893)
+shape = SubResource("BoxShape3D_cy1jc")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=2132603049]
+transform = Transform3D(-0.10558722, 0, -0.99441, 0, 1, 0, 0.99441, 0, -0.10558722, 22.797268, 3.8768628, -7.599201)
+shape = SubResource("BoxShape3D_cy1jc")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" unique_id=1564242666]
+transform = Transform3D(-0.10558722, 0, -0.99441, 0, 1, 0, 0.99441, 0, -0.10558722, 2.1546135, 3.8768628, -7.599201)
+shape = SubResource("BoxShape3D_cy1jc")
+
+[connection signal="power_off" from="PowerSwitch" to="PowerSwitchDoor" method="_on_power_switch_power_off"]
+[connection signal="power_on" from="PowerSwitch" to="PowerSwitchDoor" method="_on_power_switch_power_on"]
+
 [editable path="Sketchfab_Scene10"]
 [editable path="Sketchfab_Scene12"]
-[editable path="Door"]
