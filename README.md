@@ -18,6 +18,8 @@ Interact / Hold Lever: E
 
 toggle Camera View: T
 
+R to ECHO!
+
 How to Play
 
 Open the project in Godot Engine (v4.6+ recommended).
