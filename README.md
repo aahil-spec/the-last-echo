@@ -10,9 +10,7 @@ Move: W, A, S, D
 
 Jump: Spacebar
 
-Run: Shift
-
-Dash: Q
+Dash: Shift
 
 Interact / Hold Lever: E
 
