@@ -1,26 +1,36 @@
-extends Resettable
-class_name Door
+extends Node3D
 
-@export var open_offset:Vector3=Vector3(0,3,0)
-
-var is_open:bool=false
+var active_plates:int=0
 var baseline_position:Vector3
+@export var plates_required:int=2
+
 
 func _ready():
-	baseline_position=global_position
+	baseline_position=position
 	
+func _on_pressure_plate_activated():
+	active_plates+=1
+	if active_plates>=plates_required:
+		open_door()
+		
+func _on_pressure_plate_deactivated():
+	active_plates=max(0,active_plates-1)
+	if active_plates<plates_required:
+		close_door()
+		
 func open_door():
-	if is_open:return
-	is_open=true
 	var tween=create_tween()
-	tween.tween_property(self,"global_position",baseline_position+open_offset,0.5)
+	tween.tween_property(self,"position",baseline_position+Vector3(0,3.0,0),1.0)
 	
 func close_door():
-	if not is_open:return
-	is_open=false
 	var tween=create_tween()
-	tween.tween_property(self,"global_position",baseline_position,0.5)
+	tween.tween_property(self,"position",baseline_position,1.0)
 	
-func restore_baseline():
-	is_open=false
-	global_position=baseline_position
+
+
+func _on_pressure_plate_2_activated() -> void:
+	pass # Replace with function body.
+
+
+func _on_pressure_plate_2_deactivated() -> void:
+	pass # Replace with function body.
