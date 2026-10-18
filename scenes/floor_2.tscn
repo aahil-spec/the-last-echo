@@ -20,7 +20,6 @@
 [ext_resource type="Script" uid="uid://dr6mwh56x8vr8" path="res://Scripts/echo_manager.gd" id="18_dk70e"]
 [ext_resource type="PackedScene" uid="uid://dir8va1qjyn2f" path="res://scenes/echo.tscn" id="19_cy1jc"]
 [ext_resource type="Script" uid="uid://di3eg86obopef" path="res://Scripts/reset_manager.gd" id="20_swk8j"]
-[ext_resource type="Script" uid="uid://dv86ualvvgef" path="res://Scripts/loop_timer_ui.gd" id="21_5ie44"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xf3kq"]
 albedo_texture = ExtResource("1_6ib5v")
@@ -89,7 +88,7 @@ size = Vector3(76.03126, 95.455795, 95.455795)
 size = Vector3(94.686295, 183, 31.309998)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cy1jc"]
-size = Vector3(1.5791016, 9.157669, 7.5249634)
+size = Vector3(1.5791016, 9.157669, 8.207794)
 
 [node name="floor_2" type="Node3D" unique_id=1390886355]
 
@@ -142,6 +141,9 @@ size = Vector3(120.83972, 197.54707, 362.7771)
 
 [node name="player" parent="." unique_id=98640684 instance=ExtResource("1_xtp6k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.784153, 3.0362444, -25.008219)
+
+[node name="PlayerUI" parent="player" index="2" unique_id=209027338 node_paths=PackedStringArray("echo_manager")]
+echo_manager = NodePath("../../EchoManager")
 
 [node name="Sketchfab_Scene" parent="." unique_id=374578999 instance=ExtResource("2_ngqod")]
 transform = Transform3D(4.973219, 0, 0, 0, 4.4286222, 0, 0, 0, 4.4286222, 2.7825832, -0.5995435, -2.3872194)
@@ -372,6 +374,14 @@ shape = SubResource("BoxShape3D_cy1jc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.184433, 3.1615756, -3.0152893)
 shape = SubResource("BoxShape3D_cy1jc")
 
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" unique_id=866048292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.184433, 3.1615756, 31.15343)
+shape = SubResource("BoxShape3D_cy1jc")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D" unique_id=105427347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1410751, 3.1615756, 29.506338)
+shape = SubResource("BoxShape3D_cy1jc")
+
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=2132603049]
 transform = Transform3D(-0.10558722, 0, -0.99441, 0, 1, 0, 0.99441, 0, -0.10558722, 22.797268, 3.8768628, -7.599201)
 shape = SubResource("BoxShape3D_cy1jc")
@@ -384,27 +394,12 @@ shape = SubResource("BoxShape3D_cy1jc")
 script = ExtResource("18_dk70e")
 player_recorder = NodePath("../player/LoopRecorder")
 echo_scene = ExtResource("19_cy1jc")
-loop_timer = NodePath("../LoopTimerUI")
+loop_timer = NodePath("../player/PlayerUI")
 reset_manager = NodePath("../ResetManager")
 
 [node name="ResetManager" type="Node" parent="." unique_id=197650064 node_paths=PackedStringArray("player")]
 script = ExtResource("20_swk8j")
 player = NodePath("../player")
-
-[node name="LoopTimerUI" type="CanvasLayer" parent="." unique_id=1187921702 node_paths=PackedStringArray("echo_manager")]
-script = ExtResource("21_5ie44")
-echo_manager = NodePath("../EchoManager")
-
-[node name="LoopTimerUI" type="Label" parent="LoopTimerUI" unique_id=1946139408]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -27.5
-offset_right = 27.5
-offset_bottom = 67.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 48
-text = "60"
 
 [connection signal="power_off" from="PowerSwitch" to="PowerSwitchDoor" method="_on_power_switch_power_off"]
 [connection signal="power_on" from="PowerSwitch" to="PowerSwitchDoor" method="_on_power_switch_power_on"]

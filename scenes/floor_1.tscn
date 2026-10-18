@@ -24,7 +24,6 @@
 [ext_resource type="Script" uid="uid://dr6mwh56x8vr8" path="res://Scripts/echo_manager.gd" id="23_go15y"]
 [ext_resource type="PackedScene" uid="uid://dir8va1qjyn2f" path="res://scenes/echo.tscn" id="24_s4g8o"]
 [ext_resource type="Script" uid="uid://di3eg86obopef" path="res://Scripts/reset_manager.gd" id="25_7xsrg"]
-[ext_resource type="Script" uid="uid://dv86ualvvgef" path="res://Scripts/loop_timer_ui.gd" id="26_dm5w4"]
 [ext_resource type="Script" uid="uid://cxy4n0k2ki22m" path="res://Scripts/elevator_exit.gd" id="28_gjixm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_goiq3"]
@@ -191,6 +190,9 @@ material = SubResource("StandardMaterial3D_0g2tf")
 
 [node name="player" parent="." unique_id=98640684 instance=ExtResource("4_mmu3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.388545, 3.143188, 9.142526)
+
+[node name="PlayerUI" parent="player" index="2" unique_id=209027338 node_paths=PackedStringArray("echo_manager")]
+echo_manager = NodePath("../../EchoManager")
 
 [node name="Modle" type="Node3D" parent="." unique_id=524932886]
 
@@ -413,27 +415,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.302293, 0.96970856, 9.93622
 script = ExtResource("23_go15y")
 player_recorder = NodePath("../player/LoopRecorder")
 echo_scene = ExtResource("24_s4g8o")
-loop_timer = NodePath("../LoopTimerUI")
+loop_timer = NodePath("../player/PlayerUI")
 reset_manager = NodePath("../ResetManager")
 
 [node name="ResetManager" type="Node" parent="." unique_id=1226772398 node_paths=PackedStringArray("player")]
 script = ExtResource("25_7xsrg")
 player = NodePath("../player")
-
-[node name="LoopTimerUI" type="CanvasLayer" parent="." unique_id=108994050 node_paths=PackedStringArray("echo_manager")]
-script = ExtResource("26_dm5w4")
-echo_manager = NodePath("../EchoManager")
-
-[node name="LoopTimerUI" type="Label" parent="LoopTimerUI" unique_id=31707900]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -27.5
-offset_right = 27.5
-offset_bottom = 67.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 48
-text = "60"
 
 [node name="ElevatorExit" type="Area3D" parent="." unique_id=221621907]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.439943, 1.9091576, -24.727785)

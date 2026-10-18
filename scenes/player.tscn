@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://c4kdhdaeo8h5i" path="res://Scripts/player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://b03avx38kjvsd" path="res://Scripts/loop_recorder.gd" id="2_g2els"]
+[ext_resource type="Script" uid="uid://dv86ualvvgef" path="res://Scripts/loop_timer_ui.gd" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://bqiw4id7lokhw" path="res://assets/models/character/cac-1792344174067.glb" id="3_qhqgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 radius = 0.39501953
 height = 1.7080078
 
-[node name="Player" type="CharacterBody3D" unique_id=98640684]
+[node name="Player" type="CharacterBody3D" unique_id=98640684 groups=["resettable"]]
 script = ExtResource("1_4flbx")
 walk_speed = 4.0
 run_speed = 6.0
@@ -23,8 +24,9 @@ shape = SubResource("CapsuleShape3D_onrkg")
 script = ExtResource("2_g2els")
 
 [node name="PlayerUI" type="CanvasLayer" parent="." unique_id=209027338]
+script = ExtResource("3_dqkch")
 
-[node name="ColorRect" type="ColorRect" parent="PlayerUI" unique_id=2121170221]
+[node name="CrossHair" type="ColorRect" parent="PlayerUI" unique_id=2121170221]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -53,6 +55,26 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 26
 text = "Press E to Interact"
+
+[node name="FadeScreen" type="ColorRect" parent="PlayerUI" unique_id=165990662]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="LoopTimerUI" type="Label" parent="PlayerUI" unique_id=1022559568]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.5
+offset_right = 27.5
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "60"
 
 [node name="Visuals" type="Node3D" parent="." unique_id=501865092]
 

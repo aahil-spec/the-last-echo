@@ -21,7 +21,11 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var dash_timer = 0.0
 var is_dashing = false
 var is_third_person=false
+
+var start_position:Vector3
 func _ready():
+		start_position=global_position
+		add_to_group("resettable")
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		spring_arm.spring_length=0.0
 		spring_arm.add_excluded_object(self.get_rid())
@@ -67,8 +71,11 @@ func _physics_process(delta):
 			interaction_prompt.visible=false
 			if interaction_ray.is_colliding():
 				var target=interaction_ray.get_collider()
-				if target.has_method("interact") or target.get_parent().has_method("interact"):
-					interaction_prompt.visible=true
+				if target:
+					if target.has_method("interact"):
+						interaction_prompt.visible=true
+					elif target.get_parent() and target.get_parent().has_method("interact"):
+						interaction_prompt.visible=true
 func _unhandled_input(event):
 		if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 				rotate_y(-event.relative.x * mouse_sensitivity)
@@ -107,3 +114,6 @@ func _unhandled_input(event):
 					if loop_recorder:
 						loop_recorder.record_interaction(final_target)
 		
+func restore_baseline():
+	global_position=start_position
+	velocity=Vector3.ZERO

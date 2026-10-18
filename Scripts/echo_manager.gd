@@ -2,7 +2,7 @@ extends Node
 
 @export var player_recorder:Node
 @export var echo_scene:PackedScene
-@export var loop_timer:Node
+@export var loop_timer:CanvasLayer
 @export var reset_manager:Node
 
 var active_echo:Node=null
