@@ -1,4 +1,6 @@
 extends CharacterBody3D
+
+
 @export var walk_speed = 5.0
 @export var run_speed = 10.0
 @export var dash_speed = 25.0
@@ -7,6 +9,9 @@ extends CharacterBody3D
 @export var mouse_sensitivity = 0.002
 
 @onready var camera = $Camera3D
+@onready var interaction_prompt=$PlayerUI/InteractionPrompt
+@onready var interaction_ray=$Camera3D/InteractionRay
+@onready var loop_recorder=$LoopRecorder
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var dash_timer = 0.0
@@ -41,13 +46,29 @@ func _physics_process(delta):
 				velocity.x = move_toward(velocity.x, 0, current_speed)
 				velocity.z = move_toward(velocity.z, 0, current_speed)
 		move_and_slide()
+		if interaction_prompt:
+			interaction_prompt.visible=false
+			if interaction_ray.is_colliding():
+				var target=interaction_ray.get_collider()
+				if target is Interactable:
+					interaction_prompt.visible=true
 func _unhandled_input(event):
 		if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 				rotate_y(-event.relative.x * mouse_sensitivity)
 				camera.rotate_x(-event.relative.y *  mouse_sensitivity)
 				camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+		
 		if event.is_action_pressed("ui_cancel"):
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		if event is InputEventMouseButton:
-						if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-										Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			if event.button_index==MOUSE_BUTTON_RIGHT and event.pressed:
+				Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
+		if event is InputEventKey and event.pressed and not event.echo and event.keycode==KEY_E:
+			interaction_ray.force_raycast_update()
+			if interaction_ray.is_colliding():
+				var target=interaction_ray.get_collider()
+				if target is Interactable:
+					target.interact()
+					if loop_recorder:
+						loop_recorder.record_interaction(target)
+		
