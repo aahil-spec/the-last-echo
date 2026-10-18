@@ -14,7 +14,7 @@ func _ready():
 
 @warning_ignore("unused_parameter")
 func _on_sensor_body_entered(body):
-	if body.name!="player" and not "Echo" in body.name:
+	if body.name.to_lower() != "player" and not "echo" in body.name.to_lower():
 		return
 	bodies_on_plate+=1
 	if not is_pressed:
@@ -25,7 +25,7 @@ func _on_sensor_body_entered(body):
 			tween.tween_property(plate,"position",mesh_baseline_position+Vector3(0,0,-2.5),0.1)
 @warning_ignore("unused_parameter")
 func _on_sensor_body_exited(body):
-	if body.name!="player" and not "Echo" in body.name:
+	if body.name.to_lower() != "player" and not "echo" in body.name.to_lower():
 		return
 	bodies_on_plate=max(0,bodies_on_plate-1)
 	if bodies_on_plate==0 and is_pressed:

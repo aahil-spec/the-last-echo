@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://bmr1xombbfj11" path="res://assets/models/stairs (1).glb" id="1_a2b10"]
 [ext_resource type="PackedScene" uid="uid://brkfrxv5ojhji" path="res://scenes/moving_platform.tscn" id="1_ksuo5"]
-[ext_resource type="PackedScene" uid="uid://bbvxm8mrblfnx" path="res://scenes/futuristic_door.tscn" id="2_3mn01"]
 [ext_resource type="PackedScene" uid="uid://b2vxlphpf4tis" path="res://assets/models/sci-fi_wall (3).glb" id="2_l5xn4"]
 [ext_resource type="PackedScene" uid="uid://cpylni61wure7" path="res://assets/models/sci_fi_doorgate_-_environment_asset.glb" id="4_l5xn4"]
 [ext_resource type="PackedScene" uid="uid://dvs5kf2envl7d" path="res://assets/models/button_key__factory_8mb.glb" id="6_r4smw"]
@@ -12,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dir8va1qjyn2f" path="res://scenes/echo.tscn" id="10_hfwcs"]
 [ext_resource type="Script" uid="uid://di3eg86obopef" path="res://Scripts/reset_manager.gd" id="11_yklvg"]
 [ext_resource type="Script" uid="uid://6q1k2c5v2x13" path="res://Scripts/reset_zone.gd" id="12_3mn01"]
+[ext_resource type="PackedScene" uid="uid://d3v8g42d2fck4" path="res://scenes/futuristic_door.scn" id="12_hfwcs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0m77k"]
 size = Vector3(113.77461, 200, 200)
@@ -24,6 +24,9 @@ size = Vector3(50.062614, 1, 24.259888)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3mn01"]
 size = Vector3(5.8842163, 1.9794922, 5.528076)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hfwcs"]
+size = Vector3(2.3651123, 4.8685913, 9.026733)
 
 [node name="floor_3" type="Node3D" unique_id=69681479]
 
@@ -54,15 +57,12 @@ operation = 2
 size = Vector3(22.300308, 5.558838, 8.949097)
 
 [node name="MovingPlatform" parent="CSGCombiner3D" unique_id=2068224707 instance=ExtResource("1_ksuo5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6566706, -1.4524014, 12.817115)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33949995, -1.4524014, 12.817115)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D" unique_id=672325108]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1897583, -0.013893127, 35.772697)
 operation = 2
 size = Vector3(2.65271, 2.8932953, 3.5102234)
-
-[node name="FuturisticDoor" parent="CSGCombiner3D" unique_id=532056250 instance=ExtResource("2_3mn01")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3496565, -1.1618464, 35.149418)
 
 [node name="Models" type="Node3D" parent="." unique_id=296770182]
 
@@ -165,11 +165,34 @@ shape = SubResource("BoxShape3D_3mn01")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.415798, 0.4897461, 2.810409)
 shape = SubResource("BoxShape3D_3mn01")
 
+[node name="FuturisticDoor" parent="." unique_id=532056250 instance=ExtResource("12_hfwcs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23738265, 2.761903, 35.215164)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2041471601]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2076544441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.581795, 5.2358294, 31.93435)
+shape = SubResource("BoxShape3D_hfwcs")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=207106214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.545744, 5.2358294, 31.93435)
+shape = SubResource("BoxShape3D_hfwcs")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=635234198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.738613, 5.2358294, -3.4952512)
+shape = SubResource("BoxShape3D_hfwcs")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" unique_id=937420147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.42367, 5.2358294, -3.552824)
+shape = SubResource("BoxShape3D_hfwcs")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" unique_id=332577273]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.892597, 5.2358294, -6.937793)
+shape = SubResource("BoxShape3D_hfwcs")
+
 [connection signal="power_on" from="PowerSwitch" to="CSGCombiner3D/MovingPlatform" method="_on_power_switch_power_on"]
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 
-[editable path="CSGCombiner3D/FuturisticDoor"]
-[editable path="CSGCombiner3D/FuturisticDoor/Sketchfab_Scene3"]
 [editable path="PowerSwitch"]
 [editable path="Player"]
 [editable path="Player/Visuals/model"]
